@@ -17,7 +17,7 @@ function isLetter(c) {
 if(!config) throw Error('No config found, please enter config after "-c"')
 
 const inputStream = fs.createReadStream(input, 'utf-8');
-const writeStream = fs.createWriteStream(output);
+
 
 let data = ''
 let outputData = ''
@@ -32,7 +32,12 @@ inputStream.on('end', () => {
       outputData += letter
     }
   })
-  writeStream.write(outputData)
+  if (fs.existsSync(output)) {
+    const writeStream = fs.createWriteStream(output);
+    writeStream.write(outputData)
+  } else {
+    stdout.write(`${outputData}\n`);
+  }
 })
 
 inputStream.on('error', () => {
@@ -45,20 +50,14 @@ inputStream.on('error', () => {
         outputData += letter
       }
     })
-    writeStream.write(outputData)
-  })
-});
-
-
-writeStream.on('error', () => {
-  outputData.toString().trim().split('').map(letter => {
-    if(isLetter(letter)) {
-      stdout.write(converter(config, letter))
+    if (fs.existsSync(output)) {
+      const writeStream = fs.createWriteStream(output);
+      writeStream.write(outputData)
     } else {
-      stdout.write(letter)
+      stdout.write(`${outputData}\n`);
     }
   })
-})
+});
 
 function converter(config, letter) {
   const conf = config.split('-')
