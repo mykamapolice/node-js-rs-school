@@ -56,6 +56,7 @@ inputStream.on('error', () => {
       writeStream.write(outputData)
     } else {
       stdout.write(`${outputData}\n`);
+      outputData = ''
     }
   })
 });
