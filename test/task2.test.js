@@ -1,3 +1,4 @@
+const {rot8Cipher} = require("../chiphers");
 const {atbashCipher} = require("../chiphers");
 const {ceasarCipher} = require("../chiphers");
 
@@ -25,4 +26,13 @@ describe('testChiphersFunction', () => {
   })
 
 
+  it('testRot8', () => {
+    alphabet.map((letter, index) => {
+      if (letter > 'r') {
+        expect(rot8Cipher(letter)).toEqual(alphabet[index + 8 - 26])
+        return
+      }
+      expect(rot8Cipher(letter)).toEqual(alphabet[index + 8])
+    })
+  })
 })
