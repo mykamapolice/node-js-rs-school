@@ -1,0 +1,24 @@
+{
+  "name": "task-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage" : "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mykamapolice/node-js-rs-school.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mykamapolice/node-js-rs-school/issues"
+  },
+  "homepage": "https://github.com/mykamapolice/node-js-rs-school#readme",
+  "dependencies": {
+    "jest": "^27.3.1"
+  }
+}
