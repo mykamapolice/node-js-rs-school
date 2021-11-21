@@ -1,4 +1,4 @@
-const {rot8Cipher, ceasarCipher, atbashCipher} = require('./chiphers')
+const {rot8Cipher, ceasarCipher, atbashCipher} = require('../chiphers/chiphers')
 
 const converter = (config, letter) => {
   const conf = config.split('-')
